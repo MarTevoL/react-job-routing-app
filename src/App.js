@@ -1,12 +1,8 @@
 import React from "react";
 import SearchAppBar from "./components/SearchAppBar";
-import JobCard from "./components/JobCard";
-import jobs from "./jobs.json";
-import Grid from "@mui/material/Grid";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { Box, Container, CssBaseline, Pagination } from "@mui/material";
-import { grey } from "@mui/material/colors";
-import PaginationBox from "./components/PaginationBox";
+import { CssBaseline } from "@mui/material";
+import GridJobCard from "./components/GridJobCard";
 
 const theme = createTheme({
   palette: {
@@ -35,20 +31,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <SearchAppBar />
-        <Container
-          sx={{
-            marginTop: 10,
-          }}
-        >
-          <Grid container spacing={2}>
-            {jobs.slice(0, 5).map((job) => (
-              <Grid key={job.id} item xs={12} md={4}>
-                <JobCard job={job} />
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-        <PaginationBox />
+        <GridJobCard />
       </ThemeProvider>
     </div>
   );

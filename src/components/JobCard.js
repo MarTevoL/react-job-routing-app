@@ -18,11 +18,12 @@ export default function JobCard({ job }) {
       direction="column"
       justifyContent="space-between"
       alignItems="center"
-      height="100%"
+      // height="100%"
+      height="300px"
       padding="5px"
-      marginLeft="20px"
-      marginRight="20px"
-      marginBottom="20px"
+      // marginLeft="20px"
+      // marginRight="20px"
+      // marginBottom="20px"
       sx={{
         backgroundColor: (theme) => theme.palette.primary.secondary,
       }}
