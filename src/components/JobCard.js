@@ -1,16 +1,8 @@
 import * as React from "react";
 
-import {
-  Box,
-  Button,
-  CardContent,
-  Chip,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Button, CardContent, Stack, Typography } from "@mui/material";
 import SkillsPaper from "./SkillsPaper";
 import Divider from "@mui/material/Divider";
-import Card from "@mui/material/Card";
 
 export default function JobCard({ job }) {
   return (
