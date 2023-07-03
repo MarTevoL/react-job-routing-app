@@ -54,6 +54,7 @@ export default function JobCard({ job }) {
       </CardContent>
       <Button
         sx={{
+          marginBottom: "8px",
           backgroundColor: (theme) => theme.palette.button,
         }}
       >
