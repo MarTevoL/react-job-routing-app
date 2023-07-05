@@ -3,8 +3,10 @@ import * as React from "react";
 import { Button, CardContent, Stack, Typography } from "@mui/material";
 import SkillsPaper from "./SkillsPaper";
 import Divider from "@mui/material/Divider";
+import { Link, useLocation } from "react-router-dom";
 
 export default function JobCard({ job }) {
+  let location = useLocation();
   return (
     <Stack
       direction="column"
@@ -53,6 +55,9 @@ export default function JobCard({ job }) {
         </Typography>
       </CardContent>
       <Button
+        component={Link}
+        to={`${job.id}`}
+        state={{ backgroundLocation: location }}
         sx={{
           marginBottom: "8px",
           backgroundColor: (theme) => theme.palette.button,

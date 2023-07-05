@@ -1,12 +1,15 @@
 import React, { useState, createContext } from "react";
+import { Outlet, Route, Routes } from "react-router-dom";
 import { Grid, Container } from "@mui/material";
 import JobCard from "./JobCard";
 import PaginationBox from "./PaginationBox";
-import jobs from "../jobs";
+import JobDetailModal from "./JobDetailModal";
+import { getJobs } from "../data";
 
 export const PageContext = createContext();
 
 function GridJobCard() {
+  let jobs = getJobs();
   const [page, setPage] = useState(1);
   const handlePageChange = (page) => {
     setPage(page);
