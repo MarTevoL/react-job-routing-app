@@ -56,7 +56,7 @@ export default function JobCard({ job }) {
       </CardContent>
       <Button
         component={Link}
-        to={`${job.id}`}
+        to={`/job/${job.id}`}
         state={{ backgroundLocation: location }}
         sx={{
           marginBottom: "8px",

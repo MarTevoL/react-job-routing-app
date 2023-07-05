@@ -1,6 +1,5 @@
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import LoginForm from "./LoginForm";
 import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
@@ -33,7 +32,7 @@ function LoginModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <LoginForm callback={() => {}} />
+          <p>Login</p>
         </Box>
       </Modal>
     </div>

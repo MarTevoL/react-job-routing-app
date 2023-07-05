@@ -223,5 +223,5 @@ export function getJobs() {
 }
 
 export function getJob(id) {
-  return jobs.find((job) => jobs.id === id);
+  return jobs.find((job) => job.id === id);
 }
