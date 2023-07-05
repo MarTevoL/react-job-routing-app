@@ -28,6 +28,8 @@ function JobDetailModal() {
     navigate(-1);
   };
 
+  console.log(job);
+
   return (
     <div>
       <Modal

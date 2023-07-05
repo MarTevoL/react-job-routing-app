@@ -16,15 +16,16 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
+
       {auth.user ? (
         <Routes>
           <Route path="/job/:Id" element={<JobDetailModal />} />
         </Routes>
       ) : (
         <Routes>
-          <Route path="/job/:Id" element={<LoginModal />} />
+          <Route path="/:Id" element={<LoginModal />} />
         </Routes>
       )}
     </>
