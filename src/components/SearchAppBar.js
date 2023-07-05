@@ -7,7 +7,10 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { Button } from "@mui/material";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import useAuth from "../auth/useAuth";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,6 +55,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+  const auth = useAuth();
+  const { user } = useAuth();
+  let navigate = useNavigate();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -79,9 +86,28 @@ export default function SearchAppBar() {
               flexGrow: 1,
             }}
           />
-          <Button variant="contained" startIcon={<LoginIcon />}>
-            Login
-          </Button>
+          {!auth.user ? (
+            <Link to="/login">
+              <Button variant="contained" startIcon={<LoginIcon />}>
+                Login
+              </Button>
+            </Link>
+          ) : (
+            <>
+              <Typography variant="h6" color="inherit" component="div">
+                Welcome {user?.username}!
+              </Typography>
+              <Button
+                onClick={() => {
+                  auth.logout(() => navigate("/"));
+                }}
+                variant="contained"
+                startIcon={<LogoutIcon />}
+              >
+                Logout
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
