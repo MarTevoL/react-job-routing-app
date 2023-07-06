@@ -36,8 +36,8 @@ function LoginPage() {
     remember: true,
   };
   let navigate = useNavigate();
+  let location = useLocation();
   let auth = useAuth();
-  let from = navigate.state?.from?.pathname || "/";
 
   const methods = useForm({ defaultValues, resolver: yupResolver(schema) });
 
@@ -52,6 +52,7 @@ function LoginPage() {
     console.log(data);
     console.log(auth.user);
     // console.log(auth);
+    const from = location.state?.from?.pathname || "/";
     auth.login(defaultValues.email, () => {
       navigate(from, { replace: true });
     });

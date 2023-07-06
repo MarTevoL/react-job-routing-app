@@ -1,11 +1,10 @@
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { getJob } from "../data";
-import SkillsPaper from "./SkillsPaper";
 
 const style = {
   position: "absolute",
@@ -21,7 +20,6 @@ const style = {
 function JobDetailModal() {
   let { Id } = useParams();
   let navigate = useNavigate();
-  let location = useLocation();
   let job = getJob(Id);
 
   const handleClose = () => {
