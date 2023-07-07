@@ -6,7 +6,7 @@ import {
   Alert,
   IconButton,
   InputAdornment,
-  Container,
+  Grid,
   Box,
 } from "@mui/material";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -60,50 +60,64 @@ function LoginPage() {
 
   return (
     <div>
-      <Container>
-        <Box display={"flex"} justifyContent={"center"}>
-          <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-            <Stack spacing={3} marginTop={50}>
-              {!!errors.afterSubmit && (
-                <Alert severity="error">{errors.afterSubmit.message}</Alert>
-              )}
-              <FTextField name="email" label="Email password" />
-              <FTextField
-                name="password"
-                label="Password"
-                type={showPassword ? "text" : "password"}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={() => setshowPassword(!showPassword)}
-                        onMouseDown={(e) => e.preventDefault()}
-                        edge="end"
-                      ></IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Stack>
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent="space-between"
-              sx={{ my: 2 }}
-            ></Stack>
-            <LoadingButton
-              size="large"
-              type="submit"
-              variant="contained"
-              loading={isSubmittng}
-              sx={{ width: 350 }}
-            >
-              login
-            </LoadingButton>
-          </FormProvider>
-        </Box>
-      </Container>
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh" }}
+      >
+        <Grid item xs={3}>
+          <Box
+            display={"flex"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            sx={{ backgroundColor: "grey", width: 500, height: 300 }}
+          >
+            <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+              <Stack spacing={3}>
+                {!!errors.afterSubmit && (
+                  <Alert severity="error">{errors.afterSubmit.message}</Alert>
+                )}
+                <FTextField name="email" label="Email password" />
+                <FTextField
+                  name="password"
+                  label="Password"
+                  type={showPassword ? "text" : "password"}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={() => setshowPassword(!showPassword)}
+                          onMouseDown={(e) => e.preventDefault()}
+                          edge="end"
+                        ></IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </Stack>
+              <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent="space-between"
+                sx={{ my: 2 }}
+              ></Stack>
+              <LoadingButton
+                size="large"
+                type="submit"
+                variant="contained"
+                loading={isSubmittng}
+                sx={{ width: 350 }}
+              >
+                login
+              </LoadingButton>
+            </FormProvider>
+          </Box>
+        </Grid>
+      </Grid>
     </div>
   );
 }

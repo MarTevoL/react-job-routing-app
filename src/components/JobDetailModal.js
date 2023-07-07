@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import SkillsPaper from "./SkillsPaper";
 import { getJob } from "../data";
 
 const style = {
@@ -49,7 +50,7 @@ function JobDetailModal() {
               <Typography variant="h5" component="div">
                 {job?.title}
               </Typography>
-              {/* <SkillsPaper skills={job?.skills} /> */}
+              <SkillsPaper skills={job?.skills} />
               <Typography>{job?.description}</Typography>
               <Typography variant="h6" component="div">
                 City: {job?.city}

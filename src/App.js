@@ -9,19 +9,38 @@ import LoginModal from "./components/LoginModal";
 
 function App() {
   const auth = useAuth();
-
+  const location = useLocation();
+  const state = location.state;
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<LoginPage />} />
-
-        {auth.user ? (
-          <Route path="/job/:Id" element={<JobDetailModal />} />
-        ) : (
-          <Route path="/:Id" element={<LoginModal />} />
-        )}
+      <Routes
+        location={
+          location.state?.backgroundLocation
+            ? location.state.backgroundLocation
+            : location
+        }
+      >
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route
+          path="*"
+          element={
+            <main>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
       </Routes>
+
+      {state && auth.user ? (
+        <Routes>
+          <Route path="/job/:Id" element={<JobDetailModal />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/job/:Id" element={<LoginModal />} />
+        </Routes>
+      )}
     </>
   );
 }

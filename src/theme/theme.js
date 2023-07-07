@@ -18,7 +18,7 @@ function ThemeProvider({ children }) {
       button: "#ffa726",
 
       background: {
-        // default: "#121212",
+        default: "#6E7269",
       },
     },
   };
